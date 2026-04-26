@@ -4,20 +4,22 @@ Simple image filtering project using NumPy and scikit-image.
 
 ## Quick Start (Windows PowerShell)
 
-### 1. Create and activate virtual environment
+### 1. Create and Activate Virtual Environment
 
 ```powershell
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 ```
 
-### 2. Install dependencies
+### 2. Install Dependencies
 
 ```powershell
 pip install -r requirements.txt
 ```
 
-### 3. Run the app
+### 3. Running the App
+
+Run all filters:
 
 ```powershell
 python main.py
@@ -62,7 +64,7 @@ Retro tuning flags (used by `retro_pixel_art`):
 
 These flags also apply when you run `--filter all`; only `retro_pixel_art` consumes them.
 
-Performance note:
+Performance notes:
 
 - This project uses pure Python loops for filtering, which can be very slow on high-resolution images.
 - By default, input images are auto-resized so their largest side is at most `1024` pixels (`--max-dimension 1024`).
@@ -120,7 +122,7 @@ If imports such as NumPy or skimage are unresolved in VS Code, select the projec
 
 This workspace already includes [.vscode/settings.json](.vscode/settings.json) configured to use that interpreter.
 
-## Notes
+## Further Notes
 
 - Package name: scikit-image
 - Import name in code: skimage
