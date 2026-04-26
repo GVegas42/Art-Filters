@@ -23,6 +23,58 @@ def get_sobel_vertical():
         [-1, 0, 1],
     ])
 
+
+def get_scharr_horizontal():
+    return np.array([
+        [-3, -10, -3],
+        [0, 0, 0],
+        [3, 10, 3],
+    ])
+
+
+def get_scharr_vertical():
+    return np.array([
+        [-3, 0, 3],
+        [-10, 0, 10],
+        [-3, 0, 3],
+    ])
+
+
+def get_prewitt_horizontal():
+    return np.array([
+        [-1, -1, -1],
+        [0, 0, 0],
+        [1, 1, 1],
+    ])
+
+
+def get_prewitt_vertical():
+    return np.array([
+        [-1, 0, 1],
+        [-1, 0, 1],
+        [-1, 0, 1],
+    ])
+
+
+def get_scharr_magnitude():
+    return {
+        'type': 'gradient_magnitude',
+        'kernel_x': get_scharr_vertical(),
+        'kernel_y': get_scharr_horizontal(),
+        'sketch_boost': True,
+        'invert': True,
+    }
+
+
+def get_prewitt_magnitude():
+    return {
+        'type': 'gradient_magnitude',
+        'kernel_x': get_prewitt_vertical(),
+        'kernel_y': get_prewitt_horizontal(),
+        'sketch_boost': True,
+        'invert': True,
+    }
+
 def get_laplacian_4():
     return np.array([
         [0, 1, 0],
@@ -104,6 +156,23 @@ def get_median_oil_base(size=5):
         'size': size,
     }
 
+
+def get_kuwahara_painterly(size=5):
+    return {
+        'type': 'kuwahara',
+        'size': size,
+    }
+
+
+def get_retro_pixel_art(levels=4, dithering='floyd_steinberg', bayer_size=4, serpentine=True):
+    return {
+        'type': 'quantize_dither',
+        'levels': levels,
+        'dithering': dithering,
+        'bayer_size': bayer_size,
+        'serpentine': serpentine,
+    }
+
 def get_all_filters():
     return {
         'sharpen': get_sharpen(),
@@ -111,6 +180,12 @@ def get_all_filters():
         'outline': get_outline(),
         'sobel_horizontal': get_sobel_horizontal(),
         'sobel_vertical': get_sobel_vertical(),
+        'scharr_horizontal': get_scharr_horizontal(),
+        'scharr_vertical': get_scharr_vertical(),
+        'scharr_magnitude': get_scharr_magnitude(),
+        'prewitt_horizontal': get_prewitt_horizontal(),
+        'prewitt_vertical': get_prewitt_vertical(),
+        'prewitt_magnitude': get_prewitt_magnitude(),
         'laplacian': get_laplacian(),
         'laplacian_4': get_laplacian_4(),
         'laplacian_8': get_laplacian_8(),
@@ -118,4 +193,6 @@ def get_all_filters():
         'log': get_log(),
         'gabor': get_gabor(),
         'median_oil_base': get_median_oil_base(),
+        'kuwahara_painterly': get_kuwahara_painterly(),
+        'retro_pixel_art': get_retro_pixel_art(),
     }
